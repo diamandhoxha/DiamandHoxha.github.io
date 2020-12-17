@@ -711,9 +711,13 @@ contact section
 /* end of Slideshow container */
 
 /* Skill section*/
+#skillsid{
+  width: 100%;
+}
+
 .skill-lines{
   padding: 25px 30px;
-  width: 1000px;
+  width: 1550px;
   background: #fff;
   box-shadow: 5px 5px 20px rgba(0,0,0,0.2);
   border-radius: 10px;
