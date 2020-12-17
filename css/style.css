@@ -1042,3 +1042,26 @@ ol li:hover .desc {
     margin-top: 30%;
   }
 }
+
+@media (max-width: 480px) {
+  .skill-lines{
+    width: 300px;
+  }
+
+  #skillsid{
+    width: 90%;
+  }
+  .mapouter {
+    width: 300px;
+  
+  }
+  
+  .gmap_canvas {
+
+    width: 300px;
+  }
+
+  nav ul {
+    margin-top: 30%;
+  }
+}
