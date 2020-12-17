@@ -1,4 +1,6 @@
-
+html {
+  scroll-behavior: smooth;
+}
 body, html {
   height: 100%;
   width: 100%;
@@ -601,7 +603,7 @@ contact section
   background-size: cover;
 }
 
-
+/* Slideshow container */
 #metabase{
   margin-bottom: 3%;
 }
@@ -611,7 +613,7 @@ contact section
 
 * {box-sizing:border-box}
 
-/* Slideshow container */
+
 .slideshow-container {
   max-width: 1000px;
   position: relative;
@@ -706,12 +708,12 @@ contact section
   from {opacity: 1}
   to {opacity: 1}
 }
-
+/* end of Slideshow container */
 
 /* Skill section*/
 .skill-lines{
   padding: 25px 30px;
-  width: 1500px;
+  width: 1000px;
   background: #fff;
   box-shadow: 5px 5px 20px rgba(0,0,0,0.2);
   border-radius: 10px;
