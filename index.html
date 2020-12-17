@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" type="text/css" href="./css/style.css">
+	<title>Portfolio</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+		integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+	<script>
+		//maginfy image
+		function magnify(imgID, zoom) {
+			var img, glass, w, h, bw;
+			img = document.getElementById(imgID);
+			/*create magnifier glass:*/
+			glass = document.createElement("DIV");
+			glass.setAttribute("class", "img-magnifier-glass");
+			/*insert magnifier glass:*/
+			img.parentElement.insertBefore(glass, img);
+			/*set background properties for the magnifier glass:*/
+			glass.style.backgroundImage = "url('" + img.src + "')";
+			glass.style.backgroundRepeat = "no-repeat";
+			glass.style.backgroundSize = (img.width * zoom) + "px " + (img.height * zoom) + "px";
+			bw = 3;
+			w = glass.offsetWidth / 2;
+			h = glass.offsetHeight / 2;
+			/*execute a function when someone moves the magnifier glass over the image:*/
+			glass.addEventListener("mousemove", moveMagnifier);
+			img.addEventListener("mousemove", moveMagnifier);
+			/*and also for touch screens:*/
+			glass.addEventListener("touchmove", moveMagnifier);
+			img.addEventListener("touchmove", moveMagnifier);
+			function moveMagnifier(e) {
+				var pos, x, y;
+				/*prevent any other actions that may occur when moving over the image*/
+				e.preventDefault();
+				/*get the cursor's x and y positions:*/
+				pos = getCursorPos(e);
+				x = pos.x;
+				y = pos.y;
+				/*prevent the magnifier glass from being positioned outside the image:*/
+				if (x > img.width - (w / zoom)) { x = img.width - (w / zoom); }
+				if (x < w / zoom) { x = w / zoom; }
+				if (y > img.height - (h / zoom)) { y = img.height - (h / zoom); }
+				if (y < h / zoom) { y = h / zoom; }
+				/*set the position of the magnifier glass:*/
+				glass.style.left = (x - w) + "px";
+				glass.style.top = (y - h) + "px";
+				/*display what the magnifier glass "sees":*/
+				glass.style.backgroundPosition = "-" + ((x * zoom) - w + bw) + "px -" + ((y * zoom) - h + bw) + "px";
+			}
+			function getCursorPos(e) {
+				var a, x = 0, y = 0;
+				e = e || window.event;
+				/*get the x and y positions of the image:*/
+				a = img.getBoundingClientRect();
+				/*calculate the cursor's x and y coordinates, relative to the image:*/
+				x = e.pageX - a.left;
+				y = e.pageY - a.top;
+				/*consider any page scrolling:*/
+				x = x - window.pageXOffset;
+				y = y - window.pageYOffset;
+				return { x: x, y: y };
+			}
+		}
+	</script>
+</head>
+<a name="indexsection"></a>
+
+<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+
+<body>
+
+
+	<div class="banner">
+		<a>
+			<img id="headerimage" src="./images/back.jpg" alt="banner">
+			<a>
+				<img id="pimage" src="./images/debs.png" alt="profile image">
+			</a>
+		</a>
+		<div class="bannertext">
+			<h1>Diamand Hoxha</h1>
+			<p>Welcome to my Portfolio</p>
+			<a class="ProileLink" href="./CV/DiamandHoxha-CV.docx">My CV</a>
+			<a class="ProileLink" href="mailto:diamand456@gmail.com">Contact Me</a>
+		</div>
+	</div>
+	<nav>
+		<nav class="navbar navbar-expand-sm bg-transparent navbar-light">
+
+			<!-- Links -->
+			<ul class="navbar-nav " id="navbar">
+				<li class="nav-item">
+					<a class="nav-link" href="#indexsection">Diamand Hoxha</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#aboutmesection">About Me</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#educationsection">Education</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#skillssection">Skills</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#projectssection">Projects</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#worksection">Work Experience</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#contactsection">Contact</a>
+				</li>
+			</ul>
+		</nav>
+	</nav>
+	<div class="index">
+		<a name="aboutmesection"></a>
+		<div class="row" id=aboutmetitle>
+			<div class="col-lg-1"></div>
+			<div class="col-lg-10">
+				<h1>About Me</h1>
+			</div>
+		</div>
+
+		<div class="row" id="aboutme">
+
+			<div class="col-lg-1"></div>
+
+			<div class="col-lg-2">
+				<a href="https://www.linkedin.com/in/diamand-hoxha/" target="_blank">
+					<img src="./images/wedding.png" alt="weddingsuit" id="aboutmeimage">
+				</a>
+			</div>
+
+			<div class="col-lg-5" id="aboutmedesc">
+				<button class="accordion" id="defaultOpenAbout">Brief Overview</button>
+				<div class="panel">
+					<p>My name is Diamand Hoxha and I am 20 years old. I am currently
+						in my final year of college in TUD -Tallaght Campus studying
+						computer science. I may one day decide to do my masters but once
+						I finish college I hope to go out into the real world and work
+						on projects that further enhance my skill and intellect.
+					</p>
+				</div>
+
+				<button class="accordion">Academic interest</button>
+				<div class="panel">
+					<p>I am interested in a lot of different sectors within IT. My
+						most passionate section would probably be game development
+						and I begin to learn game development in my final semester of
+						college, I am very excited for this and hope I get a grasp of
+						the fundamentals in game development quickly.
+					</p>
+				</div>
+
+				<button class="accordion">Hobbies</button>
+				<div class="panel">
+					<p>I have many hobbies such as playing sports, hanging out with
+						friends and I enjoy learning new things such as new tools or
+						languages that can be used in development of such things like
+						applications and websites. I have
+						played and competed in a variety of sports, the sport I have
+						played the most would be football and I am very pasionate
+						about football.
+					</p>
+				</div>
+			</div>
+			<div class="row" id="timeline">
+				<div class="col-lg-1"></div>
+				<div class="col-lg-8">
+					<p><b>Year</b></p>
+					<ol>
+
+						<li>
+							<p class="titlefortime">2000</p>
+							<span class="point"></span>
+							<p class="desc">
+								I was born this year on september 2nd.
+							</p>
+						</li>
+						<li>
+							<p class="titlefortime">2003</p>
+							<span class="point"></span>
+							<p class="desc">I started primary school.</p>
+						</li>
+						<li>
+							<p class="titlefortime">2008</p>
+							<span class="point"></span>
+							<p class="desc">I joined my local football team, this is where
+								I first found my passion for football.
+							</p>
+						</li>
+						<li>
+							<p class="titlefortime">2012</p>
+							<span class="point"></span>
+							<p class="desc">I started scondary school.</p>
+						</li>
+						<li>
+							<p class="titlefortime">2017</p>
+							<span class="point"></span>
+							<p class="desc">I started college.</p>
+						</li>
+						<li>
+							<p class="titlefortime">2021</p>
+							<span class="point"></span>
+							<p class="desc">The year i finish collge...
+								hopefully :).
+							</p>
+						</li>
+					</ol>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="row">
+			<div class="col-lg-1"></div>
+			<div class="col-lg-10">
+				<a name="educationsection"></a>
+				<div class="parallax"></div>
+			</div>
+
+		</div>
+
+
+		<div class="row" id=educationtitle>
+			<div class="col-lg-1"></div>
+			<div class="col-lg-10">
+				<h1>Education</h1>
+			</div>
+
+
+		</div>
+
+
+		<div class="row" id="college">
+			<div class="col-lg-1"></div>
+
+			<div class="col-lg-2">
+				<h3 id="secschool">College</h3>
+				<div class="polaroid">
+					<a href="https://www.it-tallaght.ie/" target="_blank">
+						<img src="./images/tallaght.png" alt="tallaght" id="educationimage" style="width: 100%;">
+					</a>
+					<div class="container1">
+						<p>TUD - Tallaght Campus</p>
+					</div>
+				</div>
+			</div>
+
+
+			<div class="col-lg-5" id="educationdesc">
+				<!-- Tab links -->
+				<div class="tab">
+					<button class="tablinks" onclick="openYear(event, 'Year4')" id="defaultOpenYear">Year 4</button>
+					<button class="tablinks" onclick="openYear(event, 'Year3')">Year 3</button>
+					<button class="tablinks" onclick="openYear(event, 'Year2')">Year 2</button>
+					<button class="tablinks" onclick="openYear(event, 'Year1')">Year 1</button>
+				</div>
+
+				<!-- Tab content -->
+				<div id="Year4" class="tabcontent">
+					<h5>GPA: x.xx</h5>
+					<h6>Module:&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Grade:
+					</h6>
+					<p>Project Year 4</p>
+					<p>Interactive Media Design & Visualisation</p>
+					<p>Enterprise Application Development</p>
+					<p>Enterprise Performance Architecture</p>
+					<p>DevOps - Continuous Integration and Deployment</p>
+					<p>Information Management</p>
+				</div>
+
+				<div id="Year3" class="tabcontent">
+					<h5>GPA: 2.58</h5>
+					<h6>Module:&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Grade:
+					</h6>
+					<p>Data Structures & Algorithms&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;C</p>
+					<p>Big Data
+						Technologies&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&ensp;&nbsp;&nbsp;B
+					</p>
+					<p>Cloud Service & Distribution Comp&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;C+</p>
+					<p>Server Side Web Development&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;C</p>
+					<p>Operating Systems&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;B
+					</p>
+					<p>Data
+						Analysis&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;B-
+					</p>
+				</div>
+
+				<div id="Year2" class="tabcontent">
+					<h5>GPA: 3.06</h5>
+					<h6>Module:&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Grade:
+					</h6>
+					<p>Management Science&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;B</p>
+					<p>Software Development 3&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;C+</p>
+					<p>Information Security&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;C+
+					</p>
+					<p>Routing & Switching Essentials&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;B+</p>
+					<p>Data Administration & Analysis&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&nbsp;&ensp;&nbsp;B</p>
+					<p>Discrete Mathematics 2&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;A</p>
+					<p>Software Development 4&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;B-</p>
+					<p>Client-Side Web Development&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;B-</p>
+					<p>Network Fundamentals&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;B</p>
+					<p>Advanced Database Technologies&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;B-</p>
+					<p>Software Quality & Assurance testing&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;B</p>
+					<p>Project&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&nbsp;B+
+					</p>
+				</div>
+
+				<div id="Year1" class="tabcontent">
+					<h5>GPA: 3.08</h5>
+					<h6>Module:&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Grade:
+					</h6>
+					<p>Computer Architecture&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;B</p>
+					<p>Software Development 1&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;B+</p>
+					<p>Business & Information Systems&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;B</p>
+					<p>Systems
+						Analysis&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;B+
+					</p>
+					<p>Operating Systems Fundamentals&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&nbsp;B</p>
+					<p>Discrete Mathematics&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;B</p>
+					<p>Software Development 2&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&nbsp;B
+					</p>
+					<p>Social Media Communications&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;B</p>
+					<p>Database Fundamentals&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;B</p>
+					<p>Statistics&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&nbsp;B+
+					</p>
+					<p>Fundamentals of Interface & Web&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&nbsp;C+</p>
+				</div>
+			</div>
+
+			<div class="col-lg-3">
+				<!-- Trigger the Modal -->
+				<img src="./images/results.png" alt="results" id="myImg">
+
+				<!-- The Modal -->
+				<div id="myModal" class="modal">
+
+					<!-- The Close Button -->
+					<span class="close">&times;</span>
+
+					<!-- Modal Content (The Image) -->
+					<img class="modal-content" id="img01">
+
+					<!-- Modal Caption (Image Text) -->
+					<div id="caption"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row" id="education">
+
+		<div class="row" id="secondaryschool">
+			<div class="col-lg-1"></div>
+
+			<div class="col-lg-2">
+				<h3 id="secschool">Secondary School</h3>
+				<div class="polaroid">
+					<a href="https://www.stmacdaras.ie/accounting-lc/stmacdaras-logo/" target="_blank">
+						<img src="./images/secschoolimg.png" alt="tallaght" id="educationimage" style="width: 100%;">
+					</a>
+					<div class="container1">
+						<p>St.Mac Daras</p>
+					</div>
+				</div>
+			</div>
+
+
+			<div class="col-lg-5" id="educationtext">
+				<P>
+					I attended St.Mac Daras Secondary School from 2012 - 2017.
+					My favourite subject in school was engineering and I
+					worked hard in this subject for the entire time I spent in
+					school and had a true passion for it at the time. My engineering
+					teacher was also my favourite teacher throughout all my years of
+					attendance.
+					I attended the school for a total of
+					<span id="dots1">...</span><span id="more1"> 5 years and
+						throughout my time here I played football for the school
+						team for a number of years. I got a total of 206 points
+						my leaving certificate, i started school at the age of 11
+						and finished when I was 16, but by the time I started college
+						had reached the age of 17. I enjoyed my time here and will
+						cherish the memories I made with teachers and students for
+						the many years to come.</span></p>
+				<button onclick="myFunction1()" id="readmoreless1">Read more</button>
+
+				</P>
+			</div>
+
+			<div id="schoolimg" class="col-lg-3">
+				<a target="_blank" href="../images/school.jpg">
+					<img src="./images/school.jpg" alt="school">
+				</a>
+			</div>
+
+		</div>
+
+		<div class="row">
+			<div class="col-lg-1"></div>
+			<div class="col-lg-10">
+				<div class="parallax3"></div>
+			</div>
+		</div>
+		<a name="skillssection"></a>
+		<div class="row" id=projecttitle>
+			<div class="col-lg-1"></div>
+			<div class="col-lg-10">
+				<h1>Skills</h1>
+			</div>
+
+		</div>
+
+		<div class="row">
+			<div class="col-lg-1"></div>
+			<div id="skillsid" class="col-lg-10">
+
+					<div class="skill-lines">
+						<div class="line">
+							<div class="language">
+								<span>HTML</span>
+							</div>
+							<div class="progress-line html">
+								<span></span>
+							</div>
+						</div>
+						<div class="line">
+							<div class="language">
+								<span>CSS</span>
+							</div>
+							<div class="progress-line css">
+								<span></span>
+							</div>
+						</div>
+						<div class="line">
+							<div class="language">
+								<span>MySQL</span>
+							</div>
+							<div class="progress-line mysql">
+								<span></span>
+							</div>
+						</div>
+						<div class="line">
+							<div class="language">
+								<span>Java</span>
+							</div>
+							<div class="progress-line Java">
+								<span></span>
+							</div>
+						</div>
+						<div class="line">
+							<div class="language">
+								<span>XAML</span>
+							</div>
+							<div class="progress-line xaml">
+								<span></span>
+							</div>
+						</div>
+						<div class="line">
+							<div class="language">
+								<span>C#</span>
+							</div>
+							<div class="progress-line c">
+								<span></span>
+							</div>
+						</div>
+						<div class="line">
+							<div class="language">
+								<span>C++</span>
+							</div>
+							<div class="progress-line cplus">
+								<span></span>
+							</div>
+						</div>
+						<div class="line">
+							<div class="language">
+								<span>javascript</span>
+							</div>
+							<div class="progress-line jquery">
+								<span></span>
+							</div>
+						</div>
+					</div>
+
+			</div>
+		</div>
+
+
+		<div class="row">
+			<div class="col-lg-1"></div>
+			<div class="col-lg-10">
+				<div class="parallax1"></div>
+			</div>
+
+		</div>
+		<a name="projectssection"></a>
+		<div class="row" id=projecttitle>
+			<div class="col-lg-1"></div>
+			<div class="col-lg-10">
+				<h1>Projects</h1>
+			</div>
+		</div>
+
+		<a name="projectssection"></a>
+		<div class="row" id="projects">
+
+			<div class="col-lg-1"></div>
+			<div class="col-lg-2">
+				<div class="flip-box">
+					<div class="flip-box-inner">
+						<div class="flip-box-front">
+							<img src="./images/projectimage1.jpg" alt="project" id="projectimage">
+						</div>
+						<div class="flip-box-back">
+							<h2>Projects</h2>
+							<p></p>
+							<p>Year 4: Mobile Phone App</p>
+							<p>Year 2: Cinema Website</p>
+						</div>
+
+					</div>
+				</div>
+			</div>
+
+			<div class="col-lg-5">
+				<div class="tab1">
+					<button class="tablinks1" onclick="openProject(event, 'projYear4')" id="defaultOpenProject">Year
+						4</button>
+					<button class="tablinks1" onclick="openProject(event, 'projYear2')">Year 2</button>
+				</div>
+
+				<div id="projYear4" class="tabcontent1">
+					<h3>Mobile Phone App</h3>
+					<p>This is a mobile application that will be cross platform
+						using Xamarin Forms on Visual Studio 2019. This app
+						will most likely have some sort of a login and register
+						functionality to it that will allow the user to login/register.
+						It will also have other functionality such a CRUD in
+						different areas of the project.
+					</p>
+				</div>
+
+				<div id="projYear2" class="tabcontent1">
+					<h3>Cinema Website</h3>
+					<p>This was a website built using Java PlayFramework in second year
+						and it allowed a user to login and register for an account
+						for the website. it allowed the user to purchase a ticket for
+						the list of movies that were being hsowed at that time. The
+						tickets had a counter attached to them so if the movie sold out
+						it would not allow someone to purchase anymore. The website
+						had and admin login also that could use the CRUD functionality
+						on a list of movies.
+					</p>
+				</div>
+
+			</div>
+
+			<div class="row">
+				<div class="col-lg-2"></div>
+				<div class="col-lg-8">
+					<!-- Slideshow container -->
+					<div class="slideshow-container">
+
+						<div class="mySlides fade">
+							<div class="numbertext">Mobile Phone App</div>
+							<img src="./images/loginregister.png" style="width:100%" height="700px">
+							<div class="text"></div>
+						</div>
+						<!-- Full-width images with number and caption text -->
+						<div class="mySlides fade">
+							<div class="numbertext">Cinema Website</div>
+							<img src="./images/cinemawebsite.png" style="width:100%" height="700px">
+							<div class="text"></div>
+						</div>
+
+						<!-- Next and previous buttons -->
+						<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+						<a class="next" onclick="plusSlides(1)">&#10095;</a>
+					</div>
+					<br>
+
+					<!-- The dots/circles -->
+					<div style="text-align:center">
+						<span class="dot" onclick="currentSlide(1)"></span>
+						<span class="dot" onclick="currentSlide(2)"></span>
+					</div>
+
+				</div>
+			</div>
+
+
+		</div>
+		<div class="row">
+			<div class="col-lg-1"></div>
+			<div class="col-lg-10">
+				<a name="worksection"></a>
+				<div class="parallax2"></div>
+			</div>
+
+		</div>
+
+
+		<div class="row" id=worktitle>
+			<div class="col-lg-1"></div>
+			<div class="col-lg-10">
+				<h1>Work Experience</h1>
+			</div>
+		</div>
+
+
+		<div class="row" id="work">
+
+			<div class="col-lg-1"></div>
+
+			<div class="col-lg-2">
+				<div class="polaroid1">
+					<a href="https://www.dunnesstores.com/" target="_blank">
+						<img src="./images/dunnes-stores.jpg" alt="dunnes" id="projectimage"
+							style="width: 70%; margin-left: 15%;">
+					</a>
+				</div>
+			</div>
+
+			<div class="col-lg-5">
+				<h3>Dunnes Stores Head Office</h3>
+				<p></p>
+				<p>
+					My second semester of my thirsd year of college
+					involved me in completing a six month internship
+					in Dunnes Stores Head Office. My main task
+					<span id="dots">...</span><span id="more">when
+						I started there was to do a KPI project. The KPI
+						project involved me creating a bunch of visualisations
+						represented on dashboards for a wide variety of
+						topics within Dunnes Stores Head Office. An
+						example of one dashboard I created was the amount of
+						tickets that the IT team within head office were
+						receiving and completing but also to show how
+						long these tickets were taking to complete or
+						if some of them were not being complete at all.
+						In total I create approximately 10 dashboards with
+						a number of different visualisations on each, each
+						of these visualisations were pulling the information
+						directly from their databases. The visualisations
+						were being updated in real time. I also created a
+						number of different scripts while working in Dunnes
+						Stores Head Office, I completed a lot of smaller tasks
+						while there also such as creating a website on a node
+						server and other challenges such as this.</span></p>
+				<button onclick="myFunction()" id="readmoreless">Read more</button>
+
+
+
+			</div>
+
+		</div>
+
+		<div class="row" id="metabase">
+			<div class="col-lg-3"></div>
+			<div class="col-lg-6">
+				<h3 style="margin-top: 3%; margin-bottom: 3%; text-align: center;">Metabase Dashboard Sample</h3>
+				<div class="img-magnifier-container">
+					<a>
+						<img style="width: 100%;" id="myimage" src="./images/metabasedashboard3.png"
+							alt="Metabase Dashboard">
+					</a>
+				</div>
+			</div>
+		</div>
+
+		<!-- Start of footer row -->
+		<!--
+
+			-->
+
+
+		<div class="row">
+			<div class="col-lg-1"></div>
+			<div class="col-lg-10">
+				<a name="contactsection"></a>
+				<div class="parallax4"></div>
+			</div>
+
+		</div>
+
+
+		<div class="row" id=worktitle>
+			<div class="col-lg-1"></div>
+			<div class="col-lg-10">
+				<h1>Contact Me</h1>
+			</div>
+		</div>
+
+		<div class="row" id="contact">
+			<div class="col-lg-1"></div>
+			<div class="col-lg-4">
+				<div class="col-lg-10" id="googlemaps">
+					<div class="mapouter">
+						<div class="gmap_canvas"><iframe width="600" height="500" id="gmap_canvas"
+								src="https://maps.google.com/maps?q=44%20beechpark%20court&t=&z=13&ie=UTF8&iwloc=&output=embed"
+								frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a
+								href="https://embedgooglemap.net/mapv2/"></a></div>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-lg-7" id="contactdetails">
+				<div class="row" id="logo">
+					<a href="mailto:diamand456@gmail.com">
+						<img style="height:25px; width: 35px;" src="./images/emaillogo.png" alt="email Image">
+					</a>
+					<p id="contacttext"><a>Diamand456@gmail.com</a></p>
+				</div>
+				<div class="row" id="logo">
+					<a href="tel:353 (0)1 6112714">
+						<img style="height:30px; width: 35px; " src="./images/phonelogo.jpg" alt="email Image">
+					</a>
+					<p id="contacttext"><a>087 360 1227</a></p>
+				</div>
+				<div class="row" id="logo">
+					<a target="_blank" href="https://www.facebook.com/diamand.hoxha.1">
+						<img style="height:30px; width: 35px;" src="./images/facebooklogo.png" alt="email Image">
+					</a>
+					<p id="contacttext"><a href="https://www.facebook.com/diamand.hoxha.1">facebook.com/diamandhoxha</a>
+					</p>
+				</div>
+				<div class="row" id="logo">
+					<a target="_blank" href="https://www.linkedin.com/in/diamand-hoxha/">
+						<img style="height:30px; width: 35px;" src="./images/Linkedin.png" alt="email Image">
+					</a>
+					<p id="contacttext"><a
+							href="https://www.linkedin.com/in/diamand-hoxha/">linkedin.com/diamandhoxha</a></p>
+				</div>
+				<div class="row" id="logo">
+					<a target="_blank" href="https://github.com/diamandhoxha">
+						<img style="height:30px; width: 35px;" src="./images/githublogo.png" alt="email Image">
+					</a>
+					<p id="contacttext"><a href="https://github.com/diamandhoxha">github.com/diamandhoxha</a></p>
+				</div>
+			</div>
+
+
+
+
+		</div>
+		<script>
+			/* Initiate Magnify Function
+			with the id of the image, and the strength of the magnifier glass:*/
+			magnify("myimage", 2);
+		</script>
+		<!-- End of footer row-->
+		<script src="./javascript/script.js">
+
+		</script>
+
+</body>
+
+
+</html>
